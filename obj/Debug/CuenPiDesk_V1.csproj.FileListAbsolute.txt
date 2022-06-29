@@ -1,0 +1,13 @@
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\bin\Debug\CuenPiDesk_V1.exe.config
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\bin\Debug\CuenPiDesk_V1.exe
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\bin\Debug\CuenPiDesk_V1.pdb
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.csproj.AssemblyReference.cache
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.csproj.SuggestedBindingRedirects.cache
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.Form1.resources
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.Properties.Resources.resources
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.csproj.GenerateResource.cache
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.csproj.CoreCompileInputs.cache
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.exe
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.pdb
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.Vista.RegistrarUsuarios.resources
+C:\Users\PRIDE RABBIT\source\repos\CuenPiDesk_V1\obj\Debug\CuenPiDesk_V1.Vista.ProductosMarcas.resources
