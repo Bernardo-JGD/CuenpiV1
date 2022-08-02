@@ -191,7 +191,7 @@ namespace CuenPiDesk_V1.Controlador
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No hay compras registrados: " + ex.Message);
                 return 0;
             }
             finally

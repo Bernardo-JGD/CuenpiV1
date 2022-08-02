@@ -146,10 +146,9 @@ namespace CuenPiDesk_V1.Vista
                 txtApodo.Text = (string)dgClientes.Rows[e.RowIndex].Cells[2].Value;
                 txtDireccion.Text = (string)dgClientes.Rows[e.RowIndex].Cells[3].Value;
                 txtTelefono.Text = (string)dgClientes.Rows[e.RowIndex].Cells[4].Value;
-                txtNombre.ForeColor = Color.Black;
-                txtApodo.ForeColor = Color.Black;
-                txtDireccion.ForeColor = Color.Black;
-                txtTelefono.ForeColor = Color.Black;
+
+                textoClientePlaceHolderBlack();
+
                 rellenarTablaAbonos();
                 rellenarTablaCompras();
                 DatosClientesAbonos dca = new DatosClientesAbonos();
@@ -157,14 +156,7 @@ namespace CuenPiDesk_V1.Vista
                 totalAbonos.Text = Convert.ToString(dca.consultarTotalAbonos(idUsuario));
                 totalCompras.Text = Convert.ToString(dcc.consultarTotalCompras(idUsuario));
 
-                if (Convert.ToInt32(totalAbonos.Text) == 0 && Convert.ToInt32(totalCompras.Text) == 0)
-                {
-                    totalResta.Text = "0";
-                }
-                else
-                {
-                    totalResta.Text = Convert.ToString(Convert.ToInt32(totalCompras.Text) - Convert.ToInt32(totalAbonos.Text));
-                }
+                imprimirResta();
 
             }
         }
@@ -183,6 +175,26 @@ namespace CuenPiDesk_V1.Vista
             txtDireccion.ForeColor = Color.DimGray;
             txtApodo.ForeColor = Color.DimGray;
             txtTelefono.ForeColor = Color.DimGray;
+        }
+
+        private void textoClientePlaceHolderBlack()
+        {
+            txtNombre.ForeColor = Color.Black;
+            txtApodo.ForeColor = Color.Black;
+            txtDireccion.ForeColor = Color.Black;
+            txtTelefono.ForeColor = Color.Black;
+        }
+
+        private void imprimirResta()
+        {
+            if (Convert.ToInt32(totalAbonos.Text) == 0 && Convert.ToInt32(totalCompras.Text) == 0)
+            {
+                totalResta.Text = "0";
+            }
+            else
+            {
+                totalResta.Text = Convert.ToString(Convert.ToInt32(totalCompras.Text) - Convert.ToInt32(totalAbonos.Text));
+            }
         }
 
         private void btnAbonar_Click(object sender, EventArgs e)
@@ -385,10 +397,22 @@ namespace CuenPiDesk_V1.Vista
             PlaceHold.Leave("Teléfono", txtTelefono);
         }
 
+        private void txtMontoAbono_Enter(object sender, EventArgs e)
+        {
+            PlaceHold.Enter("$Monto$", txtMontoAbono);
+        }
+
+        private void txtMontoAbono_Leave(object sender, EventArgs e)
+        {
+            PlaceHold.Leave("$Monto$", txtMontoAbono);
+        }
+
         private void btnIProductos_Click(object sender, EventArgs e)
         {
             ProductosMarcas abrir = new ProductosMarcas();
             abrir.Show();
         }
+
+        
     }
 }
