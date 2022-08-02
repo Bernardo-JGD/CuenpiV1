@@ -157,6 +157,9 @@ namespace CuenPiDesk_V1.Vista
                 totalCompras.Text = Convert.ToString(dcc.consultarTotalCompras(idUsuario));
 
                 imprimirResta();
+                seleccionarPrimerAbono();
+
+
 
             }
         }
@@ -176,6 +179,8 @@ namespace CuenPiDesk_V1.Vista
             txtApodo.ForeColor = Color.DimGray;
             txtTelefono.ForeColor = Color.DimGray;
         }
+
+        
 
         private void textoClientePlaceHolderBlack()
         {
@@ -227,7 +232,30 @@ namespace CuenPiDesk_V1.Vista
                 idAbono.Text = Convert.ToString(dgAbonos.Rows[e.RowIndex].Cells[0].Value);
                 selecFechaAbono.Value = Convert.ToDateTime(dgAbonos.Rows[e.RowIndex].Cells[1].Value);
                 txtMontoAbono.Text = Convert.ToString(dgAbonos.Rows[e.RowIndex].Cells[2].Value);
+                textoAbonoPlaceHolderBlack();
             }
+        }
+
+        private void seleccionarPrimerAbono()
+        {
+            if (dgAbonos.RowCount < 1)
+            {
+                limpiarCamposAbono();
+            }
+            else
+            {
+                idAbonoSeleccionado = Convert.ToInt32(dgAbonos.Rows[0].Cells[0].Value);
+                idAbono.Text = Convert.ToString(dgAbonos.Rows[0].Cells[0].Value);
+                selecFechaAbono.Value = Convert.ToDateTime(dgAbonos.Rows[0].Cells[1].Value);
+                txtMontoAbono.Text = Convert.ToString(dgAbonos.Rows[0].Cells[2].Value);
+                textoAbonoPlaceHolderBlack();
+            }
+        }
+
+        private void textoAbonoPlaceHolderBlack()
+        {
+            idAbono.ForeColor = Color.Black;
+            txtMontoAbono.ForeColor = Color.Black;
         }
 
         private void btnEditarAbono_Click(object sender, EventArgs e)
@@ -251,6 +279,19 @@ namespace CuenPiDesk_V1.Vista
 
         }
 
+        private void btnLimpiarAbono_Click(object sender, EventArgs e)
+        {
+            limpiarCamposAbono();
+        }
+
+        private void limpiarCamposAbono()
+        {
+            txtMontoAbono.Text = "$Monto$";
+            txtMontoAbono.ForeColor = Color.DimGray;
+            idAbono.Text = "IDAboono";
+            idAbono.ForeColor = Color.DimGray;
+            selecFechaAbono.Value = DateTime.Now;
+        }
 
         private void btnConsultarProducto_Click(object sender, EventArgs e)
         {
