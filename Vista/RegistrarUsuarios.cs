@@ -287,8 +287,9 @@ namespace CuenPiDesk_V1.Vista
         private void limpiarCamposAbono()
         {
             txtMontoAbono.Text = "$Monto$";
+            idAbono.Text = "IDAbono";
+
             txtMontoAbono.ForeColor = Color.DimGray;
-            idAbono.Text = "IDAboono";
             idAbono.ForeColor = Color.DimGray;
             selecFechaAbono.Value = DateTime.Now;
         }
@@ -394,7 +395,23 @@ namespace CuenPiDesk_V1.Vista
             }
         }
 
+        private void btnLimpiarCompra_Click(object sender, EventArgs e)
+        {
+            limpiarCamposCompra();
+        }
 
+        private void limpiarCamposCompra()
+        {
+            txtModelo.Text = "Código Prdt";
+            txtCantidad.Text = "Cant";
+            txtPrecioV.Text = "PrecioV";
+            selecFechaCompra.Value = DateTime.Now;
+            cantidadCompra.Value = 0;
+            lbTotal.Text = "Total";
+
+            txtModelo.ForeColor = Color.DimGray;
+            txtDetalleCompra.ForeColor = Color.DimGray;
+        }
 
         //Evento cuando el Text está activo
         private void txtNombre_Enter(object sender, EventArgs e)
@@ -446,6 +463,35 @@ namespace CuenPiDesk_V1.Vista
         private void txtMontoAbono_Leave(object sender, EventArgs e)
         {
             PlaceHold.Leave("$Monto$", txtMontoAbono);
+        }
+        private void idAbono_Enter(object sender, EventArgs e)
+        {
+            PlaceHold.Enter("IDAbono", idAbono);
+        }
+
+        private void idAbono_Leave(object sender, EventArgs e)
+        {
+            PlaceHold.Leave("IDAbono", idAbono);
+        }
+
+        private void txtModelo_Enter(object sender, EventArgs e)
+        {
+            PlaceHold.Enter("Código Prdt", txtModelo);
+        }
+
+        private void txtModelo_Leave(object sender, EventArgs e)
+        {
+            PlaceHold.Leave("Código Prdt", txtModelo);
+        }
+
+        private void txtDetalleCompra_Enter(object sender, EventArgs e)
+        {
+            PlaceHold.Enter("Detalle", txtDetalleCompra);
+        }
+
+        private void txtDetalleCompra_Leave(object sender, EventArgs e)
+        {
+            PlaceHold.Leave("Detalle", txtDetalleCompra);
         }
 
         private void btnIProductos_Click(object sender, EventArgs e)
