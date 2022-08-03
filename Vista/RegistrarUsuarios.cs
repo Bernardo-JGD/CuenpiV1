@@ -158,6 +158,7 @@ namespace CuenPiDesk_V1.Vista
 
                 imprimirResta();
                 seleccionarPrimerAbono();
+                seleccionarPrimerCompra();
 
 
 
@@ -314,9 +315,15 @@ namespace CuenPiDesk_V1.Vista
         {
             if (txtCantidad.Text != "" && txtPrecioV.Text != "")
             {
-                lbTotal.Text = Convert.ToString(calcularPrecioCompra());
+                lbTotal.Text = Convert.ToString(Compra.calcularPrecioCompra((Int16)cantidadCompra.Value, Convert.ToInt16(txtCantidad.Text), Convert.ToInt16(txtPrecioV.Text)));
+            }
+            else
+            {
+                MessageBox.Show("Necesita consultar un producto");
             }
         }
+        
+
         private void btnComprar_Click(object sender, EventArgs e)
         {
             registrarCompra();
@@ -338,6 +345,28 @@ namespace CuenPiDesk_V1.Vista
                 txtDetalleCompra.Text = datosCompra.Detalle;
                 selecFechaCompra.Value = Convert.ToDateTime(dgCompras.Rows[e.RowIndex].Cells[1].Value);
                 lbTotal.Text = Convert.ToString(dgCompras.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
+        private void seleccionarPrimerCompra()
+        {
+            if (dgCompras.RowCount < 1)
+            {
+                limpiarCamposCompra();
+            }
+            else
+            {
+                Compra datosCompra = new Compra();
+                DatosClientesCompras dcc = new DatosClientesCompras();
+                idCompraSeleccionada = Convert.ToInt32(dgCompras.Rows[0].Cells[0].Value);
+                datosCompra = dcc.consultarUnaCompra(idCompraSeleccionada);
+                txtModelo.Text = datosCompra.Modelo;
+                txtCantidad.Text = Convert.ToString(datosCompra.Cantidad);
+                txtPrecioV.Text = Convert.ToString(datosCompra.TotalCompra);
+                cantidadCompra.Value = Convert.ToInt32(datosCompra.CantidadUnaCompra);
+                txtDetalleCompra.Text = datosCompra.Detalle;
+                selecFechaCompra.Value = Convert.ToDateTime(dgCompras.Rows[0].Cells[1].Value);
+                lbTotal.Text = Convert.ToString(dgCompras.Rows[0].Cells[2].Value);
             }
         }
 
@@ -381,19 +410,7 @@ namespace CuenPiDesk_V1.Vista
             }
         }
 
-        private Int16 calcularPrecioCompra()
-        {
-            Int16 precioFinal = 1;
-            if (cantidadCompra.Value>=1 && cantidadCompra.Value<= Convert.ToInt16(txtCantidad.Text))
-            {
-                precioFinal = Convert.ToInt16(cantidadCompra.Value * Convert.ToInt16(txtPrecioV.Text)) ;
-                return precioFinal;
-            }
-            else
-            {
-                return precioFinal;
-            }
-        }
+        
 
         private void btnLimpiarCompra_Click(object sender, EventArgs e)
         {

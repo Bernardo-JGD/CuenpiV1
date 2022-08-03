@@ -108,5 +108,19 @@ namespace CuenPiDesk_V1.Modelo
             this.fechaCompra = fechaCompra;
         }
 
+        static public Int16 calcularPrecioCompra(Int16 cantidadCompra, Int16 txtCantidad, Int16 txtPrecioV)
+        {
+            Int16 precioFinal = 1;
+            if (cantidadCompra >= 1 && cantidadCompra <= txtCantidad)
+            {
+                precioFinal = Convert.ToInt16(cantidadCompra * txtPrecioV);
+                return precioFinal;
+            }
+            else
+            {
+                return precioFinal;
+            }
+        }
+
     }
 }
