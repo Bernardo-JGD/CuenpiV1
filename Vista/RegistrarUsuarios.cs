@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CuenPiDesk_V1.Controlador;
 using CuenPiDesk_V1.Modelo;
+using System.Text.RegularExpressions;
 
 namespace CuenPiDesk_V1.Vista
 {
@@ -22,6 +23,7 @@ namespace CuenPiDesk_V1.Vista
         int idUsuario;
         int idAbonoSeleccionado;
         int idCompraSeleccionada;
+        Regex expresion;
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -76,10 +78,12 @@ namespace CuenPiDesk_V1.Vista
         }
         private bool validacionCampos()
         {
+            expresion = new Regex(@"(^[a-zA-Z]+)([a-zA-Z\.]+)$");
             bool comprobar = false;
-            if (txtNombre.Text != "" && txtNombre.Text != "Nombre Cliente"  )
+            if ( expresion.IsMatch(txtNombre.Text) && txtNombre.Text != "Nombre Cliente"  )
             {
-                if (txtTelefono.Text != "" && txtTelefono.Text != "Teléfono"  )
+                expresion = new Regex(@"(^[0-9]{3})-([0-9]{3})-([0-9]{4}$)");
+                if ( expresion.IsMatch(txtTelefono.Text) && txtTelefono.Text != "Teléfono"  )
                 {
                     comprobar = true;
                 }
@@ -90,7 +94,7 @@ namespace CuenPiDesk_V1.Vista
             }
             else
             {
-                MessageBox.Show("Ingrese un nombre de usuario 1", "Nombre necesario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ingrese un nombre de usuario", "Nombre necesario", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return comprobar;
         }
