@@ -317,13 +317,14 @@ namespace CuenPiDesk_V1.Vista
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            if (txtCantidad.Text != "" && txtPrecioV.Text != "")
+            if (txtCantidad.Text != "" && txtPrecioV.Text != "" && txtCantidad.Text != "Cant" && txtPrecioV.Text != "PrecioV")
             {
                 lbTotal.Text = Convert.ToString(Compra.calcularPrecioCompra((Int16)cantidadCompra.Value, Convert.ToInt16(txtCantidad.Text), Convert.ToInt16(txtPrecioV.Text)));
             }
             else
             {
                 MessageBox.Show("Necesita consultar un producto");
+                cantidadCompra.Value = 0;
             }
         }
         
