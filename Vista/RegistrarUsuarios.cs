@@ -415,7 +415,6 @@ namespace CuenPiDesk_V1.Vista
             }
         }
 
-        
 
         private void btnLimpiarCompra_Click(object sender, EventArgs e)
         {
@@ -434,6 +433,22 @@ namespace CuenPiDesk_V1.Vista
             txtModelo.ForeColor = Color.DimGray;
             txtDetalleCompra.ForeColor = Color.DimGray;
         }
+
+        private void btnFiltroFechaCompras_Click(object sender, EventArgs e)
+        {
+            if (Compra.validarFechasFiltro(rangoFechaCompra1.Value, rangoFechaCompra2.Value))
+            {
+                DataTable dt;
+                DatosClientesCompras dcc = new DatosClientesCompras();
+                dt = dcc.mostrarComprasFiltradas(idUsuario, rangoFechaCompra1.Value.Date, rangoFechaCompra2.Value.Date);
+                dgCompras.DataSource = dt;
+            }
+            else
+            {
+                MessageBox.Show("Rango de fechas no valido");
+            }
+        }
+
 
         //Evento cuando el Text está activo
         private void txtNombre_Enter(object sender, EventArgs e)

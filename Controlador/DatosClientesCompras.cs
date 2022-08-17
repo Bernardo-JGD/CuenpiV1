@@ -200,5 +200,40 @@ namespace CuenPiDesk_V1.Controlador
             }
         }
 
+        public DataTable mostrarComprasFiltradas(int idCliente, DateTime fecha1, DateTime fecha2)
+        {
+            try
+            {
+                ConexionBD.abrirConexion();
+                cmd = new SqlCommand("SP_ConsultarComprasRangoFecha", ConexionBD.conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idDeudor", idCliente);
+                cmd.Parameters.AddWithValue("@fecha1", fecha1);
+                cmd.Parameters.AddWithValue("@fecha2", fecha2);
+
+                if (cmd.ExecuteNonQuery() != 0)
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
+                    adaptador.Fill(dt);
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                ConexionBD.cerrarConexion();
+            }
+        }
+
     }
 }

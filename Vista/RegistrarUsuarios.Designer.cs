@@ -96,10 +96,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.rangoFechaCompra2 = new System.Windows.Forms.DateTimePicker();
             this.rangoFechaCompra1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnFiltroFechaAbonos = new System.Windows.Forms.Button();
+            this.btnFiltroFechaCompras = new System.Windows.Forms.Button();
+            this.btnMostrarTodosAbonos = new System.Windows.Forms.Button();
+            this.btnMostrarTodasCompras = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -876,49 +876,50 @@
             this.rangoFechaCompra1.Size = new System.Drawing.Size(115, 26);
             this.rangoFechaCompra1.TabIndex = 21;
             // 
-            // button1
+            // btnFiltroFechaAbonos
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(887, 62);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 30);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Filtrar por fechas";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnFiltroFechaAbonos.BackColor = System.Drawing.Color.White;
+            this.btnFiltroFechaAbonos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltroFechaAbonos.Location = new System.Drawing.Point(887, 62);
+            this.btnFiltroFechaAbonos.Name = "btnFiltroFechaAbonos";
+            this.btnFiltroFechaAbonos.Size = new System.Drawing.Size(147, 30);
+            this.btnFiltroFechaAbonos.TabIndex = 24;
+            this.btnFiltroFechaAbonos.Text = "Filtrar por fechas";
+            this.btnFiltroFechaAbonos.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnFiltroFechaCompras
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1213, 62);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(147, 30);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "Filtrar por fechas";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnFiltroFechaCompras.BackColor = System.Drawing.Color.White;
+            this.btnFiltroFechaCompras.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltroFechaCompras.Location = new System.Drawing.Point(1213, 62);
+            this.btnFiltroFechaCompras.Name = "btnFiltroFechaCompras";
+            this.btnFiltroFechaCompras.Size = new System.Drawing.Size(147, 30);
+            this.btnFiltroFechaCompras.TabIndex = 25;
+            this.btnFiltroFechaCompras.Text = "Filtrar por fechas";
+            this.btnFiltroFechaCompras.UseVisualStyleBackColor = false;
+            this.btnFiltroFechaCompras.Click += new System.EventHandler(this.btnFiltroFechaCompras_Click);
             // 
-            // button4
+            // btnMostrarTodosAbonos
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(726, 62);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 30);
-            this.button4.TabIndex = 26;
-            this.button4.Text = "Mostrar todo";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnMostrarTodosAbonos.BackColor = System.Drawing.Color.White;
+            this.btnMostrarTodosAbonos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostrarTodosAbonos.Location = new System.Drawing.Point(726, 62);
+            this.btnMostrarTodosAbonos.Name = "btnMostrarTodosAbonos";
+            this.btnMostrarTodosAbonos.Size = new System.Drawing.Size(115, 30);
+            this.btnMostrarTodosAbonos.TabIndex = 26;
+            this.btnMostrarTodosAbonos.Text = "Mostrar todo";
+            this.btnMostrarTodosAbonos.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btnMostrarTodasCompras
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1050, 62);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 30);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "Mostrar todo";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnMostrarTodasCompras.BackColor = System.Drawing.Color.White;
+            this.btnMostrarTodasCompras.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostrarTodasCompras.Location = new System.Drawing.Point(1050, 62);
+            this.btnMostrarTodasCompras.Name = "btnMostrarTodasCompras";
+            this.btnMostrarTodasCompras.Size = new System.Drawing.Size(115, 30);
+            this.btnMostrarTodasCompras.TabIndex = 27;
+            this.btnMostrarTodasCompras.Text = "Mostrar todo";
+            this.btnMostrarTodasCompras.UseVisualStyleBackColor = false;
             // 
             // RegistrarUsuarios
             // 
@@ -926,10 +927,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CuenPiDesk_V1.Properties.Resources.FondoCuenpi;
             this.ClientSize = new System.Drawing.Size(1370, 729);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnMostrarTodasCompras);
+            this.Controls.Add(this.btnMostrarTodosAbonos);
+            this.Controls.Add(this.btnFiltroFechaCompras);
+            this.Controls.Add(this.btnFiltroFechaAbonos);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.rangoFechaCompra2);
             this.Controls.Add(this.rangoFechaCompra1);
@@ -1050,9 +1051,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker rangoFechaCompra2;
         private System.Windows.Forms.DateTimePicker rangoFechaCompra1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnFiltroFechaAbonos;
+        private System.Windows.Forms.Button btnFiltroFechaCompras;
+        private System.Windows.Forms.Button btnMostrarTodosAbonos;
+        private System.Windows.Forms.Button btnMostrarTodasCompras;
     }
 }

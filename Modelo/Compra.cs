@@ -122,5 +122,30 @@ namespace CuenPiDesk_V1.Modelo
             }
         }
 
+        public static bool validarFechasFiltro(DateTime fecha1, DateTime Fecha2)
+        {
+            int resultado = DateTime.Compare(fecha1.Date, Fecha2.Date);
+            if (resultado < 0)
+            {
+                //lbResultado.Text = "Fecha 1 es menor que fecha 2";
+                return true;
+            }
+            else
+            {
+
+                if (resultado == 0)
+                {
+                    //lbResultado.Text = "Ambas fechas son iguales";
+                    return true;
+                }
+                else
+                {
+                    //lbResultado.Text = "La fecha 1 es mayor que la fecha 2";
+                    return false;
+                }
+
+            }
+        }
+
     }
 }
