@@ -124,6 +124,47 @@ namespace CuenPiDesk_V1.Vista
             dgCompras.DataSource = dt;
         }
 
+        private void btnFiltroFechaAbonos_Click(object sender, EventArgs e)
+        {
+            if (Compra.validarFechasFiltro(rangoFechaAbono1.Value, rangoFechaAbono2.Value))
+            {
+                DataTable dt;
+                DatosClientesAbonos dca = new DatosClientesAbonos();
+                dt = dca.mostrarAbonosFiltrados(idUsuario, rangoFechaAbono1.Value.Date, rangoFechaAbono2.Value.Date);
+                dgAbonos.DataSource = dt;
+            }
+            else
+            {
+                MessageBox.Show("Rango de fechas no valido");
+            }
+        }
+
+        private void btnMostrarTodosAbonos_Click(object sender, EventArgs e)
+        {
+            rellenarTablaAbonos();
+        }
+
+        private void btnFiltroFechaCompras_Click(object sender, EventArgs e)
+        {
+            if (Compra.validarFechasFiltro(rangoFechaCompra1.Value, rangoFechaCompra2.Value))
+            {
+                DataTable dt;
+                DatosClientesCompras dcc = new DatosClientesCompras();
+                dt = dcc.mostrarComprasFiltradas(idUsuario, rangoFechaCompra1.Value.Date, rangoFechaCompra2.Value.Date);
+                dgCompras.DataSource = dt;
+            }
+            else
+            {
+                MessageBox.Show("Rango de fechas no valido");
+            }
+        }
+
+
+        private void btnMostrarTodasCompras_Click(object sender, EventArgs e)
+        {
+            rellenarTablaCompras();
+        }
+
         private void RegistrarUsuarios_Load(object sender, EventArgs e)
         {
             rellenarTablaClientes();
@@ -433,22 +474,6 @@ namespace CuenPiDesk_V1.Vista
             txtModelo.ForeColor = Color.DimGray;
             txtDetalleCompra.ForeColor = Color.DimGray;
         }
-
-        private void btnFiltroFechaCompras_Click(object sender, EventArgs e)
-        {
-            if (Compra.validarFechasFiltro(rangoFechaCompra1.Value, rangoFechaCompra2.Value))
-            {
-                DataTable dt;
-                DatosClientesCompras dcc = new DatosClientesCompras();
-                dt = dcc.mostrarComprasFiltradas(idUsuario, rangoFechaCompra1.Value.Date, rangoFechaCompra2.Value.Date);
-                dgCompras.DataSource = dt;
-            }
-            else
-            {
-                MessageBox.Show("Rango de fechas no valido");
-            }
-        }
-
 
         //Evento cuando el Text está activo
         private void txtNombre_Enter(object sender, EventArgs e)
