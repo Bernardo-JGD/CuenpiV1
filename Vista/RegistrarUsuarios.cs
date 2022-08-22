@@ -325,6 +325,25 @@ namespace CuenPiDesk_V1.Vista
 
         }
 
+        private void btnEliminarAbono_Click(object sender, EventArgs e)
+        {
+            eliminarAbono();
+            rellenarTablaAbonos();
+        }
+
+        private void eliminarAbono()
+        {
+            DatosClientesAbonos dca = new DatosClientesAbonos();
+            if (dca.eliminarAbono(idAbonoSeleccionado))
+            {
+                MessageBox.Show("Abono eliminado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar el abono");
+            }
+        }
+
         private void btnLimpiarAbono_Click(object sender, EventArgs e)
         {
             limpiarCamposAbono();
@@ -456,6 +475,25 @@ namespace CuenPiDesk_V1.Vista
             }
         }
 
+        private void btnEliminarCompra_Click(object sender, EventArgs e)
+        {
+            eliminarCompra();
+            rellenarTablaCompras();
+        }
+
+        private void eliminarCompra()
+        {
+            
+            DatosClientesCompras dcc = new DatosClientesCompras();
+            if (dcc.eliminarCompra(idCompraSeleccionada, txtModelo.Text, (byte)cantidadCompra.Value))
+            {
+                MessageBox.Show("Compra eliminada correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se eliminó la compra");
+            }
+        }
 
         private void btnLimpiarCompra_Click(object sender, EventArgs e)
         {

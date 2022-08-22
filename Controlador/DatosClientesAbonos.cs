@@ -15,39 +15,6 @@ namespace CuenPiDesk_V1.Controlador
 
         private SqlCommand cmd = new SqlCommand();
 
-        public bool insertarAbonos(AbonosClientes ac)
-        {
-            try
-            {
-
-                ConexionBD.abrirConexion();
-                cmd = new SqlCommand("SP_InsertarAbonos", ConexionBD.conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idDeudor", ac.IdDeudor);
-                cmd.Parameters.AddWithValue("@cantidad", ac.Cantidad);
-                cmd.Parameters.AddWithValue("@fecha", ac.FechaAbono);
-
-                if (cmd.ExecuteNonQuery() != 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                ConexionBD.cerrarConexion();
-            }
-        }
-
         public DataTable mostrarAbonos(int idCliente)
         {
             try
@@ -74,6 +41,74 @@ namespace CuenPiDesk_V1.Controlador
             {
                 MessageBox.Show(ex.Message);
                 return null;
+            }
+            finally
+            {
+                ConexionBD.cerrarConexion();
+            }
+        }
+
+        public DataTable mostrarAbonosFiltrados(int idCliente, DateTime fecha1, DateTime fecha2)
+        {
+            try
+            {
+                ConexionBD.abrirConexion();
+                cmd = new SqlCommand("SP_ConsultarAbonosRangoFecha", ConexionBD.conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idDeudor", idCliente);
+                cmd.Parameters.AddWithValue("@fecha1", fecha1);
+                cmd.Parameters.AddWithValue("@fecha2", fecha2);
+
+                if (cmd.ExecuteNonQuery() != 0)
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
+                    adaptador.Fill(dt);
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                ConexionBD.cerrarConexion();
+            }
+        }
+
+        public bool insertarAbonos(AbonosClientes ac)
+        {
+            try
+            {
+
+                ConexionBD.abrirConexion();
+                cmd = new SqlCommand("SP_InsertarAbonos", ConexionBD.conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idDeudor", ac.IdDeudor);
+                cmd.Parameters.AddWithValue("@cantidad", ac.Cantidad);
+                cmd.Parameters.AddWithValue("@fecha", ac.FechaAbono);
+
+                if (cmd.ExecuteNonQuery() != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
             }
             finally
             {
@@ -152,34 +187,29 @@ namespace CuenPiDesk_V1.Controlador
             }
         }
 
-        public DataTable mostrarAbonosFiltrados(int idCliente, DateTime fecha1, DateTime fecha2)
+        public bool eliminarAbono(int idAbono)
         {
             try
             {
                 ConexionBD.abrirConexion();
-                cmd = new SqlCommand("SP_ConsultarAbonosRangoFecha", ConexionBD.conexion);
+                cmd = new SqlCommand("SP_EliminarAbono", ConexionBD.conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idDeudor", idCliente);
-                cmd.Parameters.AddWithValue("@fecha1", fecha1);
-                cmd.Parameters.AddWithValue("@fecha2", fecha2);
+                cmd.Parameters.AddWithValue("@idAbono", idAbono);
 
                 if (cmd.ExecuteNonQuery() != 0)
                 {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
-                    adaptador.Fill(dt);
-                    return dt;
+                    return true;
                 }
                 else
                 {
-                    return null;
+                    return false;
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-                return null;
+                return false;
             }
             finally
             {

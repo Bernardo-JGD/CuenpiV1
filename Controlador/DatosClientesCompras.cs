@@ -48,6 +48,41 @@ namespace CuenPiDesk_V1.Controlador
             }
         }
 
+        public DataTable mostrarComprasFiltradas(int idCliente, DateTime fecha1, DateTime fecha2)
+        {
+            try
+            {
+                ConexionBD.abrirConexion();
+                cmd = new SqlCommand("SP_ConsultarComprasRangoFecha", ConexionBD.conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idDeudor", idCliente);
+                cmd.Parameters.AddWithValue("@fecha1", fecha1);
+                cmd.Parameters.AddWithValue("@fecha2", fecha2);
+
+                if (cmd.ExecuteNonQuery() != 0)
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
+                    adaptador.Fill(dt);
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                ConexionBD.cerrarConexion();
+            }
+        }
+
         public bool insertarCompra(Compra c)
         {
             try
@@ -200,34 +235,31 @@ namespace CuenPiDesk_V1.Controlador
             }
         }
 
-        public DataTable mostrarComprasFiltradas(int idCliente, DateTime fecha1, DateTime fecha2)
+        public bool eliminarCompra(int idCompra, string modelo, byte cantidadCompra)
         {
             try
             {
                 ConexionBD.abrirConexion();
-                cmd = new SqlCommand("SP_ConsultarComprasRangoFecha", ConexionBD.conexion);
+                cmd = new SqlCommand("SP_EliminarCompra", ConexionBD.conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idDeudor", idCliente);
-                cmd.Parameters.AddWithValue("@fecha1", fecha1);
-                cmd.Parameters.AddWithValue("@fecha2", fecha2);
+                cmd.Parameters.AddWithValue("@idCompra", idCompra);
+                cmd.Parameters.AddWithValue("@modelo", modelo);
+                cmd.Parameters.AddWithValue("@cantidad", cantidadCompra);
 
                 if (cmd.ExecuteNonQuery() != 0)
                 {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
-                    adaptador.Fill(dt);
-                    return dt;
+                    return true;
                 }
                 else
                 {
-                    return null;
+                    return false;
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                return null;
+                MessageBox.Show("Error: " + ex);
+                return false;
             }
             finally
             {
